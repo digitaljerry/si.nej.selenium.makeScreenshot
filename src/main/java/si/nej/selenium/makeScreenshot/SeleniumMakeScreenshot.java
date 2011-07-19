@@ -21,9 +21,15 @@ public class SeleniumMakeScreenshot {
         // Notice that the remainder of the code relies on the interface, 
         // not the implementation.
         WebDriver driver = new FirefoxDriver();
+        
+        
+        String url = "http://www.google.com";
+        if ( args[0].isEmpty() == false) {
+        	url = args[0];
+        }
 
         // And now use this to visit Google
-        driver.get("http://www.najdi.si");
+        driver.get(url);
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
