@@ -4,16 +4,11 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.thoughtworks.selenium.Wait;
 
 public class SeleniumMakeScreenshot {
     public static void main(String[] args) {
@@ -26,6 +21,16 @@ public class SeleniumMakeScreenshot {
         String url = "http://www.google.com";
         if ( args[0].isEmpty() == false) {
         	url = args[0];
+        }
+        
+        String path = "/tmp/";
+        if ( args[1].isEmpty() == false) {
+        	path = args[1];
+        }
+        
+        String filename = "screenshot";
+        if ( args[2].isEmpty() == false && args[3].isEmpty() == false) {
+        	filename = "screenshot_" + args[2] + "_" + args[3];
         }
 
         // And now use this to visit Google
@@ -44,6 +49,7 @@ public class SeleniumMakeScreenshot {
 
         // Check the title of the page
         System.out.println("Page title is: " + driver.getTitle());
+        System.out.println("Filename: " + path + filename + ".png");
         
         // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
@@ -62,7 +68,7 @@ public class SeleniumMakeScreenshot {
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         // Now you can do whatever you need to do with it, for example copy somewhere
         try {
-			FileUtils.copyFile(scrFile, new File("/Users/jernejz/Temp/screenshot.png"));
+			FileUtils.copyFile(scrFile, new File(path + filename + ".png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
