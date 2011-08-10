@@ -60,7 +60,7 @@ public class SeleniumMakeScreenshot {
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         // Now you can do whatever you need to do with it, for example copy somewhere
         try {
-			FileUtils.copyFile(scrFile, new File(path + filename + ".png"));
+			FileUtils.copyFile(scrFile, new File(path + filename));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
