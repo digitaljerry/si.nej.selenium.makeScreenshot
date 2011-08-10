@@ -20,12 +20,6 @@
                 </executions>
                 <configuration>  
                     <mainClass>si.nej.selenium.makeScreenshot.SeleniumMakeScreenshot</mainClass>  
-                    <arguments>  
-                        <argument>http://www.google.com</argument>
-                        <argument>/Users/jernejz/Temp/</argument>
-                        <argument>osx</argument>
-                        <argument>firefox</argument>
-                    </arguments>  
                 </configuration>  
             </plugin>
         </plugins>

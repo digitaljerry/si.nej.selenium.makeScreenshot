@@ -17,22 +17,14 @@ public class SeleniumMakeScreenshot {
         // not the implementation.
         WebDriver driver = new FirefoxDriver();
         
+        // reading the properties (default = 2nd argument)
+        String url = System.getProperty("site", "http://www.google.com");
+        String path = System.getProperty("path", "/tmp/");
+        String os = System.getProperty("os", "linux");
+        String browser = System.getProperty("browser", "firefox");
         
-        String url = "http://www.google.com";
-        if ( args[0].isEmpty() == false) {
-        	url = args[0];
-        }
+        String filename = "screenshot_" + os + "_" + browser + ".png";
         
-        String path = "/tmp/";
-        if ( args[1].isEmpty() == false) {
-        	path = args[1];
-        }
-        
-        String filename = "screenshot";
-        if ( args[2].isEmpty() == false && args[3].isEmpty() == false) {
-        	filename = "screenshot_" + args[2] + "_" + args[3];
-        }
-
         // And now use this to visit Google
         driver.get(url);
         // Alternatively the same thing can be done like this
@@ -49,7 +41,7 @@ public class SeleniumMakeScreenshot {
 
         // Check the title of the page
         System.out.println("Page title is: " + driver.getTitle());
-        System.out.println("Filename: " + path + filename + ".png");
+        System.out.println("Filename: " + path + filename);
         
         // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
